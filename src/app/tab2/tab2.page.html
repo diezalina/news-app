@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      GLOBAL NEWS
+    </ion-title>
+  </ion-toolbar>
+  <ion-segment scrollable mode="md" color="primary">
+    <ion-segment-button mode="md" [value]="category" *ngFor="let category of categories" (click)="setCategory([category])">
+      <ion-label text-capitalize>{{ category }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content color="dark">
+  <app-news [articlesArr]="articlesArr"></app-news>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
